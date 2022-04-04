@@ -1,11 +1,14 @@
 package jpabasic.jpabasic.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Getter @Setter
 public class Member {
 
     @Id @GeneratedValue
@@ -18,43 +21,8 @@ public class Member {
     private String street;
     private String zipcode;
 
-    public Long getId() {
-        return id;
-    }
+    // 양방향 관계는 주의하자. 멤버가 주문들을 가지는 것은 좋은 설계가 아니다.
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
 }

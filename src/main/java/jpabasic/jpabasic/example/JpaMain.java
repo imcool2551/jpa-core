@@ -1,4 +1,7 @@
-package jpabasic.jpabasic;
+package jpabasic.jpabasic.example;
+
+import jpabasic.jpabasic.domain.Order;
+import jpabasic.jpabasic.domain.OrderItem;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,9 +19,8 @@ public class JpaMain {
 
         try {
 
-            // code
-
-            // code
+            Order order = new Order();
+            order.addOrderItem(new OrderItem());
 
             tx.commit();
         } catch (Exception e) {
