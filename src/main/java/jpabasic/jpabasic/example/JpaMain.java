@@ -1,12 +1,10 @@
 package jpabasic.jpabasic.example;
 
-import jpabasic.jpabasic.example.goods.Goods;
-import jpabasic.jpabasic.example.goods.Movie;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.time.LocalDateTime;
 
 public class JpaMain {
 
@@ -19,18 +17,9 @@ public class JpaMain {
 
         try {
 
-            Movie movie = new Movie();
-            movie.setDirector("A");
-            movie.setActor("B");
-            movie.setName("바람과 함께 사라지다");
-            movie.setPrice(10000);
-
-            em.persist(movie);
-
-            em.flush();
-            em.clear();
-
-            Goods goods = em.find(Goods.class, movie.getId());
+            Player player = new Player();
+            player.setCreatedBy("A");
+            player.setCreatedAt(LocalDateTime.now());
 
             tx.commit();
         } catch (Exception e) {
