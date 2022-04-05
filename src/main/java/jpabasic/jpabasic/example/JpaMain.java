@@ -1,10 +1,11 @@
 package jpabasic.jpabasic.example;
 
+import jpabasic.jpabasic.domain.items.Book;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.time.LocalDateTime;
 
 public class JpaMain {
 
@@ -16,11 +17,11 @@ public class JpaMain {
         tx.begin();
 
         try {
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("KYH");
 
-            Player player = new Player();
-            player.setCreatedBy("A");
-            player.setCreatedAt(LocalDateTime.now());
-
+            em.persist(book);
             tx.commit();
         } catch (Exception e) {
             tx.rollback();

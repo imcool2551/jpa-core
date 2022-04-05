@@ -1,4 +1,4 @@
-package jpabasic.jpabasic.example;
+package jpabasic.jpabasic.domain;
 
 import lombok.Getter;
 import lombok.Setter;

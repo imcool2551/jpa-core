@@ -9,16 +9,16 @@
         <class>jpabasic.jpabasic.domain.OrderItem</class>
         <class>jpabasic.jpabasic.domain.Delivery</class>
         <class>jpabasic.jpabasic.domain.Category</class>
+        <class>jpabasic.jpabasic.domain.items.Book</class>
+        <class>jpabasic.jpabasic.domain.items.Album</class>
+        <class>jpabasic.jpabasic.domain.items.Movie</class>
 
         <class>jpabasic.jpabasic.example.Team</class>
         <class>jpabasic.jpabasic.example.Player</class>
         <class>jpabasic.jpabasic.example.Locker</class>
         <class>jpabasic.jpabasic.example.Product</class>
         <class>jpabasic.jpabasic.example.PlayerProduct</class>
-        <class>jpabasic.jpabasic.example.goods.Goods</class>
-        <class>jpabasic.jpabasic.example.goods.Book</class>
-        <class>jpabasic.jpabasic.example.goods.Album</class>
-        <class>jpabasic.jpabasic.example.goods.Movie</class>
+
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
