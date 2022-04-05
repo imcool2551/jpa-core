@@ -1,5 +1,8 @@
 package jpabasic.jpabasic.example;
 
+import jpabasic.jpabasic.example.goods.Goods;
+import jpabasic.jpabasic.example.goods.Movie;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -16,16 +19,18 @@ public class JpaMain {
 
         try {
 
-            Player player = new Player();
-            player.setUsername("member1");
+            Movie movie = new Movie();
+            movie.setDirector("A");
+            movie.setActor("B");
+            movie.setName("바람과 함께 사라지다");
+            movie.setPrice(10000);
 
-            em.persist(player);
+            em.persist(movie);
 
-            Team team = new Team();
-            team.setName("teamA");
-            team.getPlayers().add(player);
+            em.flush();
+            em.clear();
 
-            em.persist(team);
+            Goods goods = em.find(Goods.class, movie.getId());
 
             tx.commit();
         } catch (Exception e) {
