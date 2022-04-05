@@ -1,8 +1,5 @@
 package jpabasic.jpabasic.example;
 
-import jpabasic.jpabasic.domain.Order;
-import jpabasic.jpabasic.domain.OrderItem;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -19,8 +16,16 @@ public class JpaMain {
 
         try {
 
-            Order order = new Order();
-            order.addOrderItem(new OrderItem());
+            Player player = new Player();
+            player.setUsername("member1");
+
+            em.persist(player);
+
+            Team team = new Team();
+            team.setName("teamA");
+            team.getPlayers().add(player);
+
+            em.persist(team);
 
             tx.commit();
         } catch (Exception e) {

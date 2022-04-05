@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -16,14 +18,15 @@ public class Player {
     private String username;
 
     @ManyToOne
-    @JoinColumn(name = "TEAM_ID")
+    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
     private Team team;
 
-    //==연관 관계 편의 메서드==//
-    public void changeTeam(Team team) {
-        this.team = team;
-        team.getPlayers().add(this);
-    }
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
+
+    @OneToMany(mappedBy = "player")
+    private List<PlayerProduct> playerProducts = new ArrayList<>();
 
 }
 

@@ -7,9 +7,14 @@
         <class>jpabasic.jpabasic.domain.Member</class>
         <class>jpabasic.jpabasic.domain.Order</class>
         <class>jpabasic.jpabasic.domain.OrderItem</class>
+        <class>jpabasic.jpabasic.domain.Delivery</class>
+        <class>jpabasic.jpabasic.domain.Category</class>
 
         <class>jpabasic.jpabasic.example.Team</class>
         <class>jpabasic.jpabasic.example.Player</class>
+        <class>jpabasic.jpabasic.example.Locker</class>
+        <class>jpabasic.jpabasic.example.Product</class>
+        <class>jpabasic.jpabasic.example.PlayerProduct</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
