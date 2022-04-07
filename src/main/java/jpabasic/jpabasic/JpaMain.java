@@ -1,7 +1,6 @@
 package jpabasic.jpabasic;
 
 import jpabasic.jpabasic.example.Address;
-import jpabasic.jpabasic.example.Period;
 import jpabasic.jpabasic.example.Player;
 
 import javax.persistence.EntityManager;
@@ -19,13 +18,15 @@ public class JpaMain {
         tx.begin();
 
         try {
+            Address address = new Address("city", "street", "zipcode");
 
-            Player player = new Player();
-            player.setUsername("hello");
-            player.setHomeAddress(new Address("city", "street", "zipcode"));
-            player.setWorkPeriod(new Period());
+            Player player1 = new Player();
+            player1.setUsername("hello");
+            player1.setHomeAddress(address);
+            em.persist(player1);
 
-            em.persist(player);
+            Address address2 = new Address("new city", address.getStreet(), address.getZipcode());
+            player1.setHomeAddress(address2);
 
             tx.commit();
         } catch (Exception e) {

@@ -1,13 +1,14 @@
 package jpabasic.jpabasic.example;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.Embeddable;
 import java.time.LocalDateTime;
 
 @Embeddable
-@Getter @Setter
+@Getter
+@EqualsAndHashCode
 public class Period {
 
     private LocalDateTime startDate;
