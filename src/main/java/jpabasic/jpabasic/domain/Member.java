@@ -17,9 +17,8 @@ public class Member extends BaseEntity {
 
     private String name;
 
-    private String city;
-    private String street;
-    private String zipcode;
+    @Embedded
+    private Address address;
 
     // 양방향 관계는 주의하자. 멤버가 주문들을 가지는 것은 좋은 설계가 아니다.
     @OneToMany(mappedBy = "member")
