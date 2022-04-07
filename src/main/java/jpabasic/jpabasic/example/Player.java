@@ -12,21 +12,16 @@ import java.util.List;
 public class Player {
 
     @Id @GeneratedValue
-    @Column(name = "MEMBER_ID")
+    @Column(name = "PLAYER_ID")
     private Long id;
 
     private String username;
 
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID")
     private Team team;
-
-    @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
-    private Locker locker;
 
     @OneToMany(mappedBy = "player")
     private List<PlayerProduct> playerProducts = new ArrayList<>();
-
 }
 

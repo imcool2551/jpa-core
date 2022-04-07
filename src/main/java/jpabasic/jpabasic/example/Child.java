@@ -4,19 +4,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Team {
+public class Child {
 
     @Id @GeneratedValue
-    @Column(name = "TEAM_ID")
     private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "team")
-    private List<Player> players = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PARENT_ID")
+    private Parent parent;
+
 }

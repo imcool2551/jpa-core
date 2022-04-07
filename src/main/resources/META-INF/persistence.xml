@@ -15,9 +15,10 @@
 
         <class>jpabasic.jpabasic.example.Team</class>
         <class>jpabasic.jpabasic.example.Player</class>
-        <class>jpabasic.jpabasic.example.Locker</class>
         <class>jpabasic.jpabasic.example.Product</class>
         <class>jpabasic.jpabasic.example.PlayerProduct</class>
+        <class>jpabasic.jpabasic.example.Parent</class>
+        <class>jpabasic.jpabasic.example.Child</class>
 
         <properties>
             <!-- 필수 속성 -->
