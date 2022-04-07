@@ -1,9 +1,13 @@
 package jpabasic.jpabasic;
 
-import jpabasic.jpabasic.example.Child;
-import jpabasic.jpabasic.example.Parent;
+import jpabasic.jpabasic.example.Address;
+import jpabasic.jpabasic.example.Period;
+import jpabasic.jpabasic.example.Player;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 public class JpaMain {
 
@@ -16,20 +20,12 @@ public class JpaMain {
 
         try {
 
-            Child child1 = new Child();
-            Child child2 = new Child();
+            Player player = new Player();
+            player.setUsername("hello");
+            player.setHomeAddress(new Address("city", "street", "zipcode"));
+            player.setWorkPeriod(new Period());
 
-            Parent parent = new Parent();
-            parent.addChild(child1);
-            parent.addChild(child2);
-
-            em.persist(parent);
-
-            em.flush();
-            em.clear();
-
-            Parent findParent = em.find(Parent.class, parent.getId());
-            findParent.getChildren().remove(0);
+            em.persist(player);
 
             tx.commit();
         } catch (Exception e) {
