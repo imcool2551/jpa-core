@@ -19,6 +19,7 @@
         <class>jpabasic.jpabasic.example.PlayerProduct</class>
         <class>jpabasic.jpabasic.example.Parent</class>
         <class>jpabasic.jpabasic.example.Child</class>
+        <class>jpabasic.jpabasic.example.AddressEntity</class>
 
         <properties>
             <!-- 필수 속성 -->
