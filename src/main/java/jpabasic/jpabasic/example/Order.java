@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class PlayerProduct {
+@Table(name = "ORDERS")
+public class Order {
 
     @Id @GeneratedValue
     private Long id;
@@ -17,8 +18,9 @@ public class PlayerProduct {
     @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
-    private int count;
-    private int price;
+    private Address address;
+
+    private int orderAmount;
 
     private LocalDateTime orderDateTime;
 }

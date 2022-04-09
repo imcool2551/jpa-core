@@ -16,6 +16,10 @@ public class Product {
 
     private String name;
 
+    private int price;
+
+    private int stockAmount;
+
     @OneToMany(mappedBy = "product")
-    private List<PlayerProduct> playerProducts = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 }

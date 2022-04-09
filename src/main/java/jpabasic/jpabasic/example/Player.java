@@ -10,6 +10,10 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@NamedQuery(
+        name = "Player.findByUsername",
+        query = "select p from Player p where p.username = :username"
+)
 @Getter @Setter
 public class Player {
 
@@ -18,6 +22,8 @@ public class Player {
     private Long id;
 
     private String username;
+
+    private int age;
 
     @Embedded
     private Period workPeriod;
@@ -30,11 +36,6 @@ public class Player {
         @JoinColumn(name = "MEMBER_ID"))
     @Column(name = "FOOD_NAME")
     private Set<String> favoriteFoods = new HashSet<>();
-
-//    @ElementCollection
-//    @CollectionTable(name = "ADDRESS", joinColumns =
-//    @JoinColumn(name = "MEMBER_ID"))
-//    private List<Address> addressHistory = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL,  orphanRemoval = true)
     @JoinColumn(name = "PLAYER_ID")
@@ -55,7 +56,23 @@ public class Player {
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
+    @Enumerated(EnumType.STRING)
+    private PlayerType type;
+
     @OneToMany(mappedBy = "player")
-    private List<PlayerProduct> playerProducts = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
+
+    public void changeTeam(Team team) {
+        this.team = team;
+        team.getPlayers().add(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", age=" + age;
+    }
 }
 

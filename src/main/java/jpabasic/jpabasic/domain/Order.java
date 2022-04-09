@@ -7,9 +7,9 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
+@Entity(name = "O")
 @Getter @Setter
-@Table(name = "ORDERS")
+@Table(name = "O")
 public class Order extends BaseEntity {
 
     @Id @GeneratedValue

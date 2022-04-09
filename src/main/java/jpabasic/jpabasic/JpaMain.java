@@ -1,13 +1,13 @@
 package jpabasic.jpabasic;
 
-import jpabasic.jpabasic.example.Address;
-import jpabasic.jpabasic.example.AddressEntity;
 import jpabasic.jpabasic.example.Player;
+import jpabasic.jpabasic.example.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
 
@@ -19,31 +19,43 @@ public class JpaMain {
         tx.begin();
 
         try {
+            Team teamA = new Team();
+            teamA.setName("teamA");
+            em.persist(teamA);
 
-            Player player = new Player();
-            player.setUsername("member 1");
-            player.setHomeAddress(new Address("homeCity", "street", "10000"));
+            Team teamB = new Team();
+            teamB.setName("teamB");
+            em.persist(teamB);
 
-            player.getFavoriteFoods().add("치킨");
-            player.getFavoriteFoods().add("족발");
-            player.getFavoriteFoods().add("피자");
+            Player player1 = new Player();
+            player1.setUsername("회원1");
+            player1.setAge(10);
+            player1.changeTeam(teamA);
+            em.persist(player1);
 
-            player.getAddressHistory().add(new AddressEntity("old1", "street", "10000"));
-            player.getAddressHistory().add(new AddressEntity("old2", "street", "10000"));
+            Player player2 = new Player();
+            player2.setUsername("회원2");
+            player2.setAge(10);
+            player2.changeTeam(teamA);
+            em.persist(player2);
 
-            em.persist(player);
+            Player player3 = new Player();
+            player3.setUsername("회원3");
+            player3.setAge(10);
+            player3.changeTeam(teamB);
+            em.persist(player3);
 
             em.flush();
             em.clear();
 
-            System.out.println("=============== START ==============");
-            Player findPlayer = em.find(Player.class, player.getId());
+            List<Player> result = em.createNamedQuery("Player.findByUsername", Player.class)
+                    .setParameter("username", "회원1")
+                    .getResultList();
 
-            findPlayer.getFavoriteFoods().remove("치킨");
-            findPlayer.getFavoriteFoods().add("한식");
 
-            findPlayer.getAddressHistory().remove(new AddressEntity("old1", "street", "10000"));
-            findPlayer.getAddressHistory().add(new AddressEntity("newCity1", "street", "10000"));
+            for (Player player : result) {
+                System.out.println("player = " + player);
+            }
 
             tx.commit();
         } catch (Exception e) {

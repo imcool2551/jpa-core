@@ -16,7 +16,7 @@
         <class>jpabasic.jpabasic.example.Team</class>
         <class>jpabasic.jpabasic.example.Player</class>
         <class>jpabasic.jpabasic.example.Product</class>
-        <class>jpabasic.jpabasic.example.PlayerProduct</class>
+        <class>jpabasic.jpabasic.example.Order</class>
         <class>jpabasic.jpabasic.example.Parent</class>
         <class>jpabasic.jpabasic.example.Child</class>
         <class>jpabasic.jpabasic.example.AddressEntity</class>
@@ -34,6 +34,7 @@
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.jdbc.batch_size" value="10"/>
             <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.default_batch_fetch_size" value="100" />
         </properties>
     </persistence-unit>
 </persistence>
